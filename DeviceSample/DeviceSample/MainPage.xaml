@@ -3,9 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DeviceSample"
              x:Class="DeviceSample.MainPage">
-
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        
+        <Label Text="デバイス利用サンプル" 
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+        <Button Text="音声認識" BackgroundColor="Gray" TextColor="White" BorderRadius="30" Command="{Binding SpeechRecognizeCommand}"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="認識結果:"/>
+            <Label Text="{Binding RecognizedText}" />
+        </StackLayout>
+        <Button Text="画像選択" BackgroundColor="Black" TextColor="White" BorderRadius="30" Command="{Binding PickupImageCommand}"/>
+        <Image Source="{Binding ImageUrl}"/>
+    </StackLayout>
 </ContentPage>
